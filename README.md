@@ -38,9 +38,7 @@ Now we can run the benchmarks:
 
 ## Some Remarks
 
-All in all, pythran gives us the best bang for the buck. I was very impressed.
-
-The code speed-ups are massive with virually zero porting effort.
+All in all, pythran gives us the best bang for the buck. I was very impressed. The resulting code speed ups are massive with virtually zero porting effort.
 
 Ctypes seems to incur a lot of overhead for calling functions.
 
