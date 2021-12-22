@@ -1,0 +1,11 @@
+SUBROUTINE DIST(x, y, d)
+
+   IMPLICIT NONE
+
+   REAL*8, DIMENSION(:), INTENT(IN) :: x
+   REAL*8, DIMENSION(:), INTENT(IN) :: y
+   REAL*8, INTENT(OUT) :: d
+   
+   d = SQRT(SUM((x - y)**2))
+
+END SUBROUTINE DIST
