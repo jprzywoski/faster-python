@@ -20,6 +20,7 @@ I have tried the following methods:
 
 
 Run this command to build binary modules:
+
 	$ ./build-all.sh
 
 Now we can run the benchmarks:
