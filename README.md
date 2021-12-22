@@ -26,15 +26,15 @@ Now we can run the benchmarks:
 
 	$ ./main.py 
 	Method               Time A [s]  Baseline A [x]      Time B [s]  Baseline B [x]
-	python                     5.19            1.00            4.99            1.00
-	pythran                    0.40           12.83            0.06           77.07
-	numba                      0.78            6.69            0.07           72.39
-	numpy                      2.62            1.98            0.11           45.80
-	scipy                      2.72            1.91            0.07           72.79
-	cython                     0.57            9.07            0.07           75.17
-	Fortran                    0.40           13.02            0.06           76.90
-	Ctypes                     2.18            2.37            0.06           76.91
-	Cffi                       0.96            5.42            0.06           77.67
+	python                     5.49            1.00            2.57            1.00
+	pythran                    0.39           14.01            0.06           40.26
+	numba                      0.76            7.23            0.07           38.63
+	numpy                      2.55            2.15            0.11           22.74
+	scipy                      2.70            2.03            0.07           37.68
+	cython                     0.56            9.81            0.07           39.10
+	Fortran                    0.39           14.15            0.06           40.27
+	Ctypes                     2.27            2.42            0.07           39.26
+	Cffi                       0.97            5.67            0.06           40.37
 
 ## Some Remarks
 

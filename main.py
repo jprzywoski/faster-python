@@ -75,7 +75,7 @@ def benchmark(fn, niter, arrsize):
 # Pure python implementation is used as a baseline for other benchmarks.
 #
 baseline_a = benchmark(pyeuclid.dist, NCALLS_A, ARRAYSIZE_A)
-baseline_b = benchmark(pyeuclid.dist, NCALLS_A, ARRAYSIZE_A)
+baseline_b = benchmark(pyeuclid.dist, NCALLS_B, ARRAYSIZE_B)
 NAME = 0
 FN = 1
 FMTSTR = "{0: <15}{1:16.2f}{2:16.2f}{3:16.2f}{4:16.2f}"
