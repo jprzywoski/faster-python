@@ -1,8 +1,9 @@
 from cffi import FFI
 
 ffi = FFI()
-ffi.cdef("double cdist(const double *a, const double *b, int n);")
-fn = ffi.dlopen("./libdist.so").cdist
+ffi.cdef("double dist(const double *a, const double *b, int n);")
+lib = ffi.dlopen("./libdist.so")
+fn = lib.dist
 
 
 def dist(x, y):

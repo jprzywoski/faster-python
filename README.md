@@ -1,10 +1,9 @@
 # Python Speed Benchmarks
 
+This repository contains source code used for benchmarking different methods
+of improving performance of numerical computations in Python.
 
-This repository contains code used for benchmarking different methods
-of improving code performance.
-
-The computation to speed up is a simple euclidean distance formula.
+The calculation to speed up is a simple euclidean distance formula.
 
 I have tried the following methods:
 
@@ -14,10 +13,9 @@ I have tried the following methods:
 * cython
 * pythran
 * fortran with f2py
-* plain C with ctypes / cffi
+* plain C with ctypes, cffi and SWIG
 
 ## Instructions
-
 
 Run this command to build binary modules:
 
@@ -26,20 +24,22 @@ Run this command to build binary modules:
 Now we can run the benchmarks:
 
 	$ ./main.py 
-	Method               Time A [s]  Baseline A [x]      Time B [s]  Baseline B [x]
-	python                     5.49            1.00            2.57            1.00
-	pythran                    0.39           14.01            0.06           40.26
-	numba                      0.76            7.23            0.07           38.63
-	numpy                      2.55            2.15            0.11           22.74
-	scipy                      2.70            2.03            0.07           37.68
-	cython                     0.56            9.81            0.07           39.10
-	Fortran                    0.39           14.15            0.06           40.27
-	Ctypes                     2.27            2.42            0.07           39.26
-	Cffi                       0.97            5.67            0.06           40.37
+	Method              Med. A [ms]   Speedup A [x]     Med. B [ms]   Speedup B [x]
+	python                   0.0534            1.00        106.6365            1.00
+	pythran                  0.0041           13.18          2.0952           50.90
+	numba                    0.0045           11.79          2.2156           48.13
+	numpy                    0.0257            2.07          4.0476           26.35
+	scipy                    0.0265            2.02          2.9585           36.04
+	cython                   0.0057            9.33          2.1977           48.52
+	Fortran                  0.0041           13.18          2.1245           50.19
+	Ctypes                   0.0217            2.46          2.1193           50.32
+	Cffi                     0.0098            5.46          2.1205           50.29
+	SWIG                     0.0045           11.79          3.1922           33.41
 
-## Some Remarks
+## Remarks
 
-All in all, pythran gives us the best bang for the buck. I was very impressed. The resulting code speed ups are massive with virtually zero porting effort.
+All in all, pythran gives us the best bang for the buck. I was very impressed.
+The resulting code speedups are massive with virtually zero porting effort.
 
 Ctypes seems to incur a lot of overhead for calling functions.
 
@@ -70,3 +70,6 @@ https://docs.python.org/3/library/ctypes.html
 
 Cffi
 https://cffi.readthedocs.io/en/latest/
+
+SWIG
+http://www.swig.org/

@@ -12,9 +12,9 @@ execution times for different implementations.
 The central tendency is reported as median value, just to avoid noisy readings.
 
 """
-import numpy as np
 from time import time
 import pyeuclid
+import numpy as np
 import npeuclid
 import numbaeuclid
 from scipy.spatial.distance import euclidean
@@ -23,6 +23,8 @@ import pyxeuclid
 import forteuclid
 import ceuclid
 import cffieuclid
+import cdist
+
 
 #
 # Those constants are used to execute two test cases:
@@ -56,18 +58,19 @@ distfns = [
     ("Fortran", forteuclid.dist),
     ("Ctypes", ceuclid.dist),
     ("Cffi", cffieuclid.dist),
+    ("SWIG", cdist.dist),
 ]
 
 
 def benchmark(fn, niter, arrsize):
-    """ Returns median execution time. """
-    start = time()
+    """ Returns median execution time in ms. """
     times = []
     for _ in range(niter):
+        start = time()        
         fn(np.random.rand(arrsize), np.random.rand(arrsize))
-    times.append(time() - start)
-    medval = int(len(times) / 2)
-    return sorted(times)[medval]
+        times.append(time() - start)
+    medidx = int(len(times) / 2)
+    return 1000 * sorted(times)[medidx]
 
 
 #
@@ -78,10 +81,10 @@ baseline_a = benchmark(pyeuclid.dist, NCALLS_A, ARRAYSIZE_A)
 baseline_b = benchmark(pyeuclid.dist, NCALLS_B, ARRAYSIZE_B)
 NAME = 0
 FN = 1
-FMTSTR = "{0: <15}{1:16.2f}{2:16.2f}{3:16.2f}{4:16.2f}"
+FMTSTR = "{0: <15}{1:16.4f}{2:16.2f}{3:16.4f}{4:16.2f}"
 print("{0: <15}{1: >16}{2: >16}{3: >16}{4: >16}".format(
-    "Method", "Time A [s]", "Baseline A [x]", "Time B [s]",
-    "Baseline B [x]"))
+    "Method", "Med. A [ms]", "Speedup A [x]", "Med. B [ms]",
+    "Speedup B [x]"))
 print(FMTSTR.format("python", baseline_a, baseline_a /
                     baseline_a, baseline_b, baseline_b / baseline_b))
 for distfn in distfns:

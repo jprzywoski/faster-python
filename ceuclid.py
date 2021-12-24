@@ -2,7 +2,7 @@ import ctypes
 from numpy.ctypeslib import ndpointer
 
 lib = ctypes.cdll.LoadLibrary('./libdist.so')
-fn = lib.cdist
+fn = lib.dist
 fn.restype = ctypes.c_double
 fn.argtypes = [
     ndpointer(ctypes.c_double),
